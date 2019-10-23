@@ -1,0 +1,68 @@
+{
+  "name": "banshee-44",
+  "version": "0.1.0",
+  "description": "banshee-44.com",
+  "license": "MIT",
+  "author": "Alex Tennant <alex@adtennant.co.uk>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adtennant/banshee-44.com.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.3",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
+    "eslint-utils": "^1.4.1",
+    "husky": "^3.0.8",
+    "lint-staged": "^9.4.1",
+    "prettier": "^1.18.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "7.1.0",
+    "react-scripts": "3.1.2",
+    "redux": "4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "1.0.5",
+    "reselect": "^4.0.0",
+    "typesafe-actions": "4.4.2",
+    "typescript": "3.6.2"
+  },
+  "devDependencies": {
+    "@types/react-redux": "7.1.1",
+    "@types/redux-logger": "^3.0.7"
+  },
+  "private": true,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
