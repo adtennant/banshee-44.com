@@ -1,4 +1,4 @@
-import { createAsyncAction, createStandardAction } from "typesafe-actions";
+import { createAsyncAction } from "typesafe-actions";
 import {
   IInventoryItemRaw,
   IPlugSetRaw,
@@ -8,9 +8,9 @@ import {
 } from "./types";
 
 export const fetchInventoryItemsAsync = createAsyncAction(
-  "@@manifest/FETCH_PLUG_ITEMS_REQUEST",
-  "@@manifest/FETCH_PLUG_ITEMS_SUCCESS",
-  "@@manifest/FETCH_PLUG_ITEMS_ERROR"
+  "@@manifest/FETCH_INVENTORY_ITEMS_REQUEST",
+  "@@manifest/FETCH_INVENTORY_ITEMS_SUCCESS",
+  "@@manifest/FETCH_INVENTORY_ITEMS_ERROR"
 )<undefined, IInventoryItemRaw[], string>();
 
 export const fetchPlugSetsAsync = createAsyncAction(
@@ -37,12 +37,8 @@ export const fetchStatGroupsAsync = createAsyncAction(
   "@@manifest/FETCH_STAT_GROUPS_ERROR"
 )<undefined, IStatGroupRaw[], string>();
 
-export const fetchVersionAsync = createAsyncAction(
-  "@@manifest/FETCH_VERSION_REQUEST",
-  "@@manifest/FETCH_VERSION_SUCCESS",
-  "@@manifest/FETCH_VERSION_ERROR"
-)<undefined, string, string>();
-
-export const fetchManifest = createStandardAction(
-  "@@manifest/FETCH_MANIFEST"
-)();
+export const loadManifest = createAsyncAction(
+  "@@manifest/LOAD_MANIFEST_REQUEST",
+  "@@manifest/LOAD_MANIFEST_SUCCESS",
+  "@@manifest/LOAD_MANIFEST_ERROR"
+)<undefined, undefined, undefined>();

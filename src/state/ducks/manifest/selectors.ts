@@ -9,11 +9,8 @@ import {
 } from "./types";
 import { IApplicationState } from "..";
 
-export const getInventoryItemsLoading = (state: IApplicationState) =>
-  state.manifest.inventoryItem.loading;
-
 export const getInventoryItemsRaw = (state: IApplicationState) =>
-  state.manifest.inventoryItem.data;
+  state.manifest.inventoryItem;
 
 export const getInventoryItemsByHashRaw = createSelector(
   getInventoryItemsRaw,
@@ -24,11 +21,8 @@ export const getInventoryItemsByHashRaw = createSelector(
     )
 );
 
-export const getPlugSetsLoading = (state: IApplicationState) =>
-  state.manifest.plugSet.loading;
-
 export const getPlugSetsRaw = (state: IApplicationState) =>
-  state.manifest.plugSet.data;
+  state.manifest.plugSet;
 
 export const getPlugSetsByHashRaw = createSelector(
   getPlugSetsRaw,
@@ -39,11 +33,8 @@ export const getPlugSetsByHashRaw = createSelector(
     )
 );
 
-export const getSocketCategoriesLoading = (state: IApplicationState) =>
-  state.manifest.socketCategory.loading;
-
 export const getSocketCategoriesRaw = (state: IApplicationState) =>
-  state.manifest.socketCategory.data;
+  state.manifest.socketCategory;
 
 export const getSocketCategoriesByHashRaw = createSelector(
   getSocketCategoriesRaw,
@@ -51,11 +42,7 @@ export const getSocketCategoriesByHashRaw = createSelector(
     stats.reduce((result, stat) => ({ ...result, [stat.hash]: stat }), {})
 );
 
-export const getStatsLoading = (state: IApplicationState) =>
-  state.manifest.stat.loading;
-
-export const getStatsRaw = (state: IApplicationState) =>
-  state.manifest.stat.data;
+export const getStatsRaw = (state: IApplicationState) => state.manifest.stat;
 
 export const getStatsByHashRaw = createSelector(
   getStatsRaw,
@@ -63,11 +50,8 @@ export const getStatsByHashRaw = createSelector(
     stats.reduce((result, stat) => ({ ...result, [stat.hash]: stat }), {})
 );
 
-export const getStatGroupsLoading = (state: IApplicationState) =>
-  state.manifest.statGroup.loading;
-
 export const getStatGroupsRaw = (state: IApplicationState) =>
-  state.manifest.statGroup.data;
+  state.manifest.statGroup;
 
 export const getStatGroupsByHashRaw = createSelector(
   getStatGroupsRaw,
@@ -208,36 +192,7 @@ const InventoryItem = (
   };
 };
 
-export const getManifestLoading = createSelector(
-  getInventoryItemsLoading,
-  getPlugSetsLoading,
-  getSocketCategoriesLoading,
-  getStatsLoading,
-  getStatGroupsLoading,
-  (
-    inventoryItemsLoading,
-    plugSetsLoading,
-    socketCategoriesLoading,
-    statsLoading,
-    statGroupsLoading
-  ) =>
-    inventoryItemsLoading ||
-    plugSetsLoading ||
-    socketCategoriesLoading ||
-    statsLoading ||
-    statGroupsLoading
-);
-
-export const getIsLoading = (state: IApplicationState) =>
-  state.manifest.inventoryItem.loading ||
-  state.manifest.plugSet.loading ||
-  state.manifest.socketCategory.loading ||
-  state.manifest.stat.loading ||
-  state.manifest.statGroup.loading ||
-  state.manifest.version.loading;
-
-export const getVersion = (state: IApplicationState) =>
-  state.manifest.version.data;
+export const getIsLoaded = (state: IApplicationState) => state.manifest.loaded;
 
 export const getInventoryItems = createSelector(
   getInventoryItemsByHashRaw,

@@ -1,10 +1,17 @@
-import { useSelector } from "react-redux";
-import React from "react";
-import { getVersion } from "../state/ducks/manifest/selectors";
+import React, { useState, useEffect } from "react";
+import localStorage from "../state/utils/localStorage";
 
 const ManifestVersion = () => {
-  const mainfestVersion = useSelector(getVersion);
-  return <div>Manifest: {mainfestVersion}</div>;
+  const [manifestVersion, setManifestVersion] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const result: string = await localStorage.getItem("manifestVersion");
+      setManifestVersion(result);
+    })();
+  }, []);
+
+  return <div>Manifest: {manifestVersion}</div>;
 };
 
 export default ManifestVersion;

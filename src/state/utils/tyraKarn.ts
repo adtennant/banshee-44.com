@@ -1,3 +1,7 @@
+interface ITyraKarnResult {
+  readonly _links: any;
+}
+
 interface ITyraKarnResponse<T> {
   readonly _links: {
     readonly next?: {
@@ -5,7 +9,7 @@ interface ITyraKarnResponse<T> {
     };
   };
   readonly _embedded: {
-    readonly results: T[];
+    readonly results: (T & ITyraKarnResult)[];
   };
 }
 
@@ -24,7 +28,14 @@ export default async function tyraKarn<T>(url: string) {
       }
     ).then(res => res.json());
 
-    allResults.push(...data._embedded.results);
+    allResults.push(
+      ...data._embedded.results.map(
+        (result): T => {
+          const { _links: _, ...fields } = result;
+          return fields as any;
+        }
+      )
+    );
     next = data._links.next ? data._links.next.href : null;
   }
 

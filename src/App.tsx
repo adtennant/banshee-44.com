@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIsLoading } from "./state/ducks/manifest/selectors";
-import { fetchManifest } from "./state/ducks/manifest/actions";
+import { getIsLoaded } from "./state/ducks/manifest/selectors";
+import { loadManifest } from "./state/ducks/manifest/actions";
 import Calculator from "./containers/calculator";
 import ManifestVersion from "./containers/mainfestVersion";
 import AppVersion from "./components/appVersion";
@@ -10,10 +10,10 @@ import logo from "./logo.png";
 const App = () => {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(getIsLoading);
+  const isLoaded = useSelector(getIsLoaded);
 
   useEffect(() => {
-    dispatch(fetchManifest());
+    dispatch(loadManifest.request());
   }, [dispatch]);
 
   return (
@@ -125,7 +125,7 @@ const App = () => {
               obvious). Calculations are accurate but everything else is subject
               to change and continuous improvement.
             </p>
-            {isLoading ? (
+            {!isLoaded ? (
               <span>Loading (this may take a while)...</span>
             ) : (
               <Calculator />
@@ -138,7 +138,7 @@ const App = () => {
           display: "grid",
           alignContent: "center",
           backgroundColor: "rgb(0, 0, 0)",
-          color: "rgba(255, 255, 255, 0.8)",
+          color: "rgb(255, 255, 255)",
           fontWeight: "bold",
           fontSize: "0.8rem",
           height: "60px"
@@ -166,7 +166,7 @@ const App = () => {
               rel="noopener noreferrer"
               target="_blank"
               style={{
-                color: "rgba(255, 255, 255, 0.8)",
+                color: "rgb(255, 255, 255)",
                 textDecoration: "none"
               }}
             >
@@ -177,7 +177,7 @@ const App = () => {
               rel="noopener noreferrer"
               target="_blank"
               style={{
-                color: "rgba(255, 255, 255, 0.8)",
+                color: "rgb(255, 255, 255)",
                 textDecoration: "none"
               }}
             >
