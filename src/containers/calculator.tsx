@@ -10,6 +10,7 @@ import {
 import ItemSelect from "../components/itemSelect";
 import Sockets from "../components/sockets";
 import Stats from "../components/stats";
+import ItemSearch from "../components/itemSearch";
 
 const Calculator = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Calculator = () => {
 
   return (
     <>
+      <ItemSearch items={inventoryItems} onChange={onItemChange} />
       <ItemSelect items={inventoryItems} onChange={onItemChange} />
       {selectedInventoryItem && selectedInventoryItem.sockets && (
         <Sockets {...selectedInventoryItem.sockets} onChange={onSocketChange} />

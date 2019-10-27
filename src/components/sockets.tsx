@@ -13,6 +13,11 @@ type Props = {
   onChange: (index: number, plugItemHash: number) => void;
 };
 
+const displayedSocketCategoryHashes = [
+  4241085061, // WEAPON PERKS
+  2685412949 // WEAPON MODS
+];
+
 const Sockets: React.FC<Props> = ({
   socketEntries,
   socketCategories,
@@ -22,6 +27,11 @@ const Sockets: React.FC<Props> = ({
     <>
       {socketCategories
         .sort((a, b) => a.socketCategory.index - b.socketCategory.index)
+        .filter(socketCategory =>
+          displayedSocketCategoryHashes.includes(
+            socketCategory.socketCategory.hash
+          )
+        )
         .map(socketCategory => (
           <div key={socketCategory.socketCategory.hash}>
             <h1>{socketCategory.socketCategory.displayProperties.name}</h1>

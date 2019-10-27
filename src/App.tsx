@@ -19,11 +19,49 @@ const App = () => {
   return (
     <>
       <div style={{ minHeight: "calc(100vh - 60px)" }}>
+        <div
+          style={{
+            position: "absolute",
+            width: 0,
+            height: 0,
+            borderTop: "220px solid rgb(114, 114, 115)",
+            borderLeft: "220px solid rgb(114, 114, 115)",
+            borderBottom: "220px solid transparent",
+            borderRight: "220px solid transparent",
+            zIndex: -10
+          }}
+        ></div>
+        <div
+          style={{
+            position: "absolute",
+            width: 0,
+            height: 0,
+            borderTop: "380px solid rgb(152, 153, 154)",
+            borderLeft: "380px solid rgb(152, 153, 154)",
+            borderBottom: "380px solid transparent",
+            borderRight: "380px solid transparent",
+            zIndex: -20
+          }}
+        ></div>
+        <div
+          style={{
+            position: "absolute",
+            width: 0,
+            height: 0,
+            borderTop: "460px solid rgb(132, 133, 134)",
+            borderLeft: "460px solid rgb(132, 133, 134)",
+            borderBottom: "460px solid transparent",
+            borderRight: "460px solid transparent",
+            zIndex: -30
+          }}
+        ></div>
         <header
           style={{
+            //position: "relative",
             color: "rgb(255, 255, 255)",
             height: "80px",
             textTransform: "uppercase"
+            //zIndex: 0
           }}
         >
           <div
@@ -50,42 +88,6 @@ const App = () => {
               }}
             ></div>
           </div>
-          <div
-            style={{
-              position: "absolute",
-              width: 0,
-              height: 0,
-              borderTop: "220px solid rgb(114, 114, 115)",
-              borderLeft: "220px solid rgb(114, 114, 115)",
-              borderBottom: "220px solid transparent",
-              borderRight: "220px solid transparent",
-              zIndex: -2
-            }}
-          ></div>
-          <div
-            style={{
-              position: "absolute",
-              width: 0,
-              height: 0,
-              borderTop: "380px solid rgb(152, 153, 154)",
-              borderLeft: "380px solid rgb(152, 153, 154)",
-              borderBottom: "380px solid transparent",
-              borderRight: "380px solid transparent",
-              zIndex: -3
-            }}
-          ></div>
-          <div
-            style={{
-              position: "absolute",
-              width: 0,
-              height: 0,
-              borderTop: "460px solid rgb(132, 133, 134)",
-              borderLeft: "460px solid rgb(132, 133, 134)",
-              borderBottom: "460px solid transparent",
-              borderRight: "460px solid transparent",
-              zIndex: -4
-            }}
-          ></div>
           <div
             style={{
               display: "grid",

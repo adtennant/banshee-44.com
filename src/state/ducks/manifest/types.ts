@@ -73,6 +73,7 @@ export interface IInventoryItemRaw {
   displayProperties: {
     description: string;
     name: string;
+    icon: string;
   };
   stats?: {
     statGroupHash: number;
@@ -145,6 +146,7 @@ export interface IStatGroupRaw {
 export interface IDisplayProperties {
   description: string;
   name: string;
+  icon?: string;
 }
 
 export interface IStat {

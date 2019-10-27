@@ -25,7 +25,7 @@ function* handleFetchInventoryItems(): Generator {
       tyraKarn,
       "/DestinyManifest/mobileWorldContentPaths/en/DestinyInventoryItemDefinition/" +
         '?filter={"$or":[{"itemCategoryHashes":{"$elemMatch":{"$eq":1}}},{"itemCategoryHashes":{"$elemMatch":{"$eq":41}}},{"itemCategoryHashes":{"$elemMatch":{"$eq":59}}}]}' +
-        '&select={"displayProperties.description":1,"displayProperties.name":1,"stats.statGroupHash":1,' +
+        '&select={"displayProperties.description":1,"displayProperties.name":1,"displayProperties.icon":1,"stats.statGroupHash":1,' +
         '"sockets.socketEntries":1,"sockets.socketCategories":1,' +
         '"investmentStats.statTypeHash":1,"investmentStats.value":1,' +
         '"itemCategoryHashes":1,"itemType":1,"itemSubType":1,"hash":1}'

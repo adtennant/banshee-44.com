@@ -73,7 +73,8 @@ const InventoryItem = (
   return {
     displayProperties: {
       description: inventoryItem.displayProperties.description,
-      name: inventoryItem.displayProperties.name
+      name: inventoryItem.displayProperties.name,
+      icon: inventoryItem.displayProperties.icon
     },
     stats: inventoryItem.stats &&
       statGroup && {
