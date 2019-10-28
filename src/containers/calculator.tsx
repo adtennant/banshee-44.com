@@ -7,10 +7,10 @@ import {
   getSelectedInventoryItem,
   getSelectedPlugItems
 } from "../state/ducks/calculator/selectors";
-import ItemSelect from "../components/itemSelect";
 import Sockets from "../components/sockets";
 import Stats from "../components/stats";
 import ItemSearch from "../components/itemSearch";
+import Item from "../components/item";
 
 const Calculator = () => {
   const dispatch = useDispatch();
@@ -30,16 +30,39 @@ const Calculator = () => {
   );
 
   return (
-    <>
-      <ItemSearch items={inventoryItems} onChange={onItemChange} />
-      <ItemSelect items={inventoryItems} onChange={onItemChange} />
-      {selectedInventoryItem && selectedInventoryItem.sockets && (
-        <Sockets {...selectedInventoryItem.sockets} onChange={onSocketChange} />
-      )}
-      {selectedInventoryItem && (
-        <Stats item={selectedInventoryItem} plugItems={selectedPlugItems} />
-      )}
-    </>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateRows: "auto auto"
+      }}
+    >
+      <div>
+        <div style={{ marginBottom: "1rem" }}>
+          <ItemSearch items={inventoryItems} onChange={onItemChange} />
+        </div>
+        {selectedInventoryItem && <Item item={selectedInventoryItem} />}
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: "auto auto" // gridTemplateColumns on desktop
+        }}
+      >
+        <div>
+          {selectedInventoryItem && selectedInventoryItem.sockets && (
+            <Sockets
+              {...selectedInventoryItem.sockets}
+              onChange={onSocketChange}
+            />
+          )}
+        </div>
+        <div>
+          {selectedInventoryItem && (
+            <Stats item={selectedInventoryItem} plugItems={selectedPlugItems} />
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 

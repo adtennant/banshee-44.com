@@ -15,6 +15,7 @@ export interface IManifestState {
   readonly stat: IStatRaw[];
   readonly statGroup: IStatGroupRaw[];
   readonly loaded: boolean;
+  readonly loadingMessage: string;
   readonly errors: any[];
 }
 
@@ -27,6 +28,7 @@ export const manifestReducer = createReducer<IManifestState, ManifestAction>({
   stat: [],
   statGroup: [],
   loaded: false,
+  loadingMessage: "",
   errors: []
 })
   .handleAction(actions.fetchInventoryItemsAsync.success, (state, action) => ({
@@ -68,4 +70,8 @@ export const manifestReducer = createReducer<IManifestState, ManifestAction>({
   .handleAction(actions.loadManifest.success, state => ({
     ...state,
     loaded: true
+  }))
+  .handleAction(actions.setLoadingMessage, (state, action) => ({
+    ...state,
+    loadingMessage: action.payload
   }));

@@ -76,6 +76,7 @@ const InventoryItem = (
       name: inventoryItem.displayProperties.name,
       icon: inventoryItem.displayProperties.icon
     },
+    itemTypeDisplayName: inventoryItem.itemTypeDisplayName,
     stats: inventoryItem.stats &&
       statGroup && {
         statGroup: {
@@ -194,6 +195,9 @@ const InventoryItem = (
 };
 
 export const getIsLoaded = (state: IApplicationState) => state.manifest.loaded;
+
+export const getLoadingMessage = (state: IApplicationState) =>
+  state.manifest.loadingMessage;
 
 export const getInventoryItems = createSelector(
   getInventoryItemsByHashRaw,

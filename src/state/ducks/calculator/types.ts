@@ -1,6 +1,6 @@
 import { ItemSubType } from "../manifest/types";
 
-export interface IStat {
+/*export interface IStat {
   hash: number;
   name: string;
   value: number;
@@ -62,4 +62,4 @@ export interface IDisplayStat {
   name: string;
   value: number;
   displayAsNumeric: boolean;
-}
+}*/

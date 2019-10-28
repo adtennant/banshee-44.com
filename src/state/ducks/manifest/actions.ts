@@ -1,4 +1,4 @@
-import { createAsyncAction } from "typesafe-actions";
+import { createAsyncAction, createStandardAction } from "typesafe-actions";
 import {
   IInventoryItemRaw,
   IPlugSetRaw,
@@ -42,3 +42,7 @@ export const loadManifest = createAsyncAction(
   "@@manifest/LOAD_MANIFEST_SUCCESS",
   "@@manifest/LOAD_MANIFEST_ERROR"
 )<undefined, undefined, undefined>();
+
+export const setLoadingMessage = createStandardAction(
+  "@@manifest/SET_LOADING_MESSAGE"
+)<string>();

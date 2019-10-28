@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIsLoaded } from "./state/ducks/manifest/selectors";
+import {
+  getIsLoaded,
+  getLoadingMessage
+} from "./state/ducks/manifest/selectors";
 import { loadManifest } from "./state/ducks/manifest/actions";
 import Calculator from "./containers/calculator";
 import ManifestVersion from "./containers/mainfestVersion";
@@ -11,6 +14,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   const isLoaded = useSelector(getIsLoaded);
+  const loadingMessage = useSelector(getLoadingMessage);
 
   useEffect(() => {
     dispatch(loadManifest.request());
@@ -127,11 +131,7 @@ const App = () => {
               obvious). Calculations are accurate but everything else is subject
               to change and continuous improvement.
             </p>
-            {!isLoaded ? (
-              <span>Loading (this may take a while)...</span>
-            ) : (
-              <Calculator />
-            )}
+            {!isLoaded ? <span>{loadingMessage}...</span> : <Calculator />}
           </div>
         </main>
       </div>

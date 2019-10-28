@@ -6,7 +6,8 @@ import {
   fetchStatsAsync,
   fetchSocketCategoriesAsync,
   fetchPlugSetsAsync,
-  loadManifest
+  loadManifest,
+  setLoadingMessage
 } from "./actions";
 import {
   IInventoryItemRaw,
@@ -25,8 +26,8 @@ function* handleFetchInventoryItems(): Generator {
       tyraKarn,
       "/DestinyManifest/mobileWorldContentPaths/en/DestinyInventoryItemDefinition/" +
         '?filter={"$or":[{"itemCategoryHashes":{"$elemMatch":{"$eq":1}}},{"itemCategoryHashes":{"$elemMatch":{"$eq":41}}},{"itemCategoryHashes":{"$elemMatch":{"$eq":59}}}]}' +
-        '&select={"displayProperties.description":1,"displayProperties.name":1,"displayProperties.icon":1,"stats.statGroupHash":1,' +
-        '"sockets.socketEntries":1,"sockets.socketCategories":1,' +
+        '&select={"displayProperties.description":1,"displayProperties.name":1,"displayProperties.icon":1,"itemTypeDisplayName":1,' +
+        '"stats.statGroupHash":1,"sockets.socketEntries":1,"sockets.socketCategories":1,' +
         '"investmentStats.statTypeHash":1,"investmentStats.value":1,' +
         '"itemCategoryHashes":1,"itemType":1,"itemSubType":1,"hash":1}'
     );
@@ -179,6 +180,8 @@ function* loadManifestFromStorage(): Generator {
 }
 
 function* handleLoadManifest(): Generator {
+  yield put(setLoadingMessage("Checking Manifest Version"));
+
   const [currentAppVersion, savedAppVersion]: string[] | any = yield all([
     packageJSON.version,
     call([localStorage, localStorage.getItem], "appVersion")
@@ -195,6 +198,8 @@ function* handleLoadManifest(): Generator {
     currentAppVersion !== savedAppVersion ||
     currentManifestVersion !== savedManifestVersion
   ) {
+    yield put(setLoadingMessage("Updating Manifest"));
+
     yield call(updateManifest);
 
     yield all([
@@ -210,6 +215,8 @@ function* handleLoadManifest(): Generator {
       )
     ]);
   } else {
+    yield put(setLoadingMessage("Loading Manifest"));
+
     yield call(loadManifestFromStorage);
   }
 

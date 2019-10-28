@@ -34,7 +34,9 @@ const Sockets: React.FC<Props> = ({
         )
         .map(socketCategory => (
           <div key={socketCategory.socketCategory.hash}>
-            <h1>{socketCategory.socketCategory.displayProperties.name}</h1>
+            <h1 style={{ borderBottom: "1px white solid" }}>
+              {socketCategory.socketCategory.displayProperties.name}
+            </h1>
             {socketCategory.socketIndexes.map(socketIndex => {
               const socket = socketEntries[socketIndex];
 
@@ -61,19 +63,21 @@ const Sockets: React.FC<Props> = ({
               ) {
                 // Y2 Masterworks
                 return (
-                  <Masterwork
-                    key={socketIndex}
-                    socket={socket}
-                    onChange={hash => onChange(socketIndex, hash)}
-                  />
+                  <div key={socketIndex} style={{ marginBottom: "1rem" }}>
+                    <Masterwork
+                      socket={socket}
+                      onChange={hash => onChange(socketIndex, hash)}
+                    />
+                  </div>
                 );
               } else {
                 return (
-                  <Socket
-                    key={socketIndex}
-                    socket={socket}
-                    onChange={hash => onChange(socketIndex, hash)}
-                  />
+                  <div key={socketIndex} style={{ marginBottom: "1rem" }}>
+                    <Socket
+                      socket={socket}
+                      onChange={hash => onChange(socketIndex, hash)}
+                    />
+                  </div>
                 );
               }
             })}

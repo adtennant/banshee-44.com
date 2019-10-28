@@ -85,7 +85,7 @@ const ItemSearch: React.FC<Props> = ({ items, onChange }: Props) => {
             />
             <ul style={{ listStyle: "none", margin: "1rem auto", padding: 0 }}>
               {filteredItems.map(item => (
-                <li>
+                <li key={item.hash}>
                   <article
                     style={{
                       display: "grid",
@@ -119,7 +119,13 @@ const ItemSearch: React.FC<Props> = ({ items, onChange }: Props) => {
                       <h1 style={{ fontSize: "1rem", margin: 0 }}>
                         {item.displayProperties.name}
                       </h1>
-                      <p style={{ fontSize: "0.8rem", margin: 0 }}>
+                      <p
+                        style={{
+                          fontSize: "0.8rem",
+                          fontStyle: "italic",
+                          margin: 0
+                        }}
+                      >
                         {item.displayProperties.description}
                       </p>
                     </div>
