@@ -1,0 +1,32 @@
+.firstStripe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 220px solid rgb(114, 114, 115);
+  border-left: 220px solid rgb(114, 114, 115);
+  border-bottom: 220px solid transparent;
+  border-right: 220px solid transparent;
+  z-index: -10;
+}
+
+.secondStripe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 380px solid rgb(152, 153, 154);
+  border-left: 380px solid rgb(152, 153, 154);
+  border-bottom: 380px solid transparent;
+  border-right: 380px solid transparent;
+  z-index: -20;
+}
+
+.thirdStripe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 460px solid rgb(132, 133, 134);
+  border-left: 460px solid rgb(132, 133, 134);
+  border-bottom: 460px solid transparent;
+  border-right: 460px solid transparent;
+  z-index: -30;
+}

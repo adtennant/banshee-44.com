@@ -6,7 +6,7 @@ type Props = {
   onChange: (itemHash: number) => void;
 };
 
-const ItemSearch: React.FC<Props> = ({ items, onChange }: Props) => {
+const ItemSearch: React.FC<Props> = ({ items, onChange }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [query, setQuery] = useState("");
 

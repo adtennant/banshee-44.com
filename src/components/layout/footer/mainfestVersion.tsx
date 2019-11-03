@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import localStorage from "../state/utils/localStorage";
+import localStorage from "../../../state/utils/localStorage";
 
 const ManifestVersion = () => {
   const [manifestVersion, setManifestVersion] = useState("");
@@ -11,7 +11,7 @@ const ManifestVersion = () => {
     })();
   }, []);
 
-  return <div>Manifest: {manifestVersion}</div>;
+  return <span>Manifest: {manifestVersion}</span>;
 };
 
 export default ManifestVersion;

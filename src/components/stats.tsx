@@ -79,7 +79,7 @@ const interpolate = (
   return round(displayValue);
 };
 
-const Stats: React.FC<Props> = ({ item, plugItems }: Props) => {
+const Stats: React.FC<Props> = ({ item, plugItems }) => {
   const totalInvestmentStats = [
     ...item.investmentStats,
     ...plugItems

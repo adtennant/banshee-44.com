@@ -1,0 +1,25 @@
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    ". main ."
+    "footer footer footer";
+  grid-template-columns: 2rem 1fr 2rem;
+  grid-template-rows: 108px minmax(calc(100vh - 108px - 48px), 1fr) minmax(
+      60px,
+      min-content
+    );
+  min-height: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}

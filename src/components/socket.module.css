@@ -1,0 +1,29 @@
+.socket {
+  display: grid;
+  grid-template-areas:
+    "icon name"
+    "icon description";
+  gap: 0.5rem 1rem;
+  justify-content: start;
+}
+
+.icon {
+  grid-area: icon;
+}
+
+.name {
+  grid-area: name;
+  font-size: 1.25em;
+  text-transform: uppercase;
+}
+
+.lock::after {
+  content: "\1f512";
+  margin-left: 1rem;
+}
+
+.description {
+  grid-area: description;
+  font-size: 1em;
+  font-style: italic;
+}

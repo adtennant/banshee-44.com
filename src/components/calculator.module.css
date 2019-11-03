@@ -1,0 +1,34 @@
+.calculator {
+  display: grid;
+  grid-template-areas:
+    "search search"
+    "item stats"
+    "sockets stats";
+  gap: 1rem;
+}
+
+.search {
+  grid-area: search;
+}
+
+.item {
+  grid-area: item;
+}
+
+.sockets {
+  grid-area: sockets;
+}
+
+.stats {
+  grid-area: stats;
+}
+
+@media only screen and (max-width: 768px) {
+  .calculator {
+    grid-template-areas:
+      "search"
+      "item"
+      "sockets"
+      "stats";
+  }
+}

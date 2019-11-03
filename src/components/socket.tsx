@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { ISocketEntry } from "../state/ducks/manifest/types";
+import styles from "./socket.module.css";
+import classNames from "classnames";
 
 type Props = {
   socket: ISocketEntry;
   onChange: (plugItemHash: number) => void;
 };
 
-const Socket: React.FC<Props> = ({ socket, onChange }: Props) => {
+const Socket: React.FC<Props> = ({ socket, onChange }) => {
   const plugItems = (() => {
     const plugSet = socket.randomizedPlugSet || socket.reusablePlugSet;
 
@@ -42,53 +44,27 @@ const Socket: React.FC<Props> = ({ socket, onChange }: Props) => {
     <>
       <div
         onClick={plugItems.length > 1 ? () => setShowOptions(true) : undefined}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "auto auto",
-          gridGap: "1rem",
-          justifyContent: "start"
-        }}
+        className={styles.socket}
       >
-        <div>
-          <img
-            alt={value.displayProperties.name}
-            src={`https://www.bungie.net/${value.displayProperties.icon}`}
-            height={48}
-            width={48}
-          />
-        </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateRows: "auto auto"
-          }}
+        <img
+          className={styles.icon}
+          alt={value.displayProperties.name}
+          src={`https://www.bungie.net/${value.displayProperties.icon}`}
+          height={48}
+          width={48}
+        />
+        <h1
+          className={classNames(styles.name, {
+            [styles.lock]: plugItems.length <= 1
+          })}
         >
-          <h1
-            style={{
-              fontSize: "1.5rem",
-              margin: 0,
-              marginTop: "-4px",
-              textTransform: "uppercase"
-            }}
-          >
-            {value.displayProperties.name}
-            {plugItems.length <= 1 && (
-              <span style={{ marginLeft: "1rem" }}>&#x1f512;</span>
-            )}
-          </h1>
-          <p
-            style={{
-              alignSelf: "end",
-              fontSize: "1rem",
-              fontStyle: "italic",
-              margin: 0,
-              marginBottom: "4px"
-            }}
-          >
-            {value.displayProperties.description}
-          </p>
-        </div>
+          {value.displayProperties.name}
+        </h1>
+        <p className={styles.description}>
+          {value.displayProperties.description}
+        </p>
       </div>
+
       {showOptions && (
         <div
           style={{

@@ -1,72 +1,24 @@
 import React from "react";
 import { IInventoryItem } from "../state/ducks/manifest/types";
+import styles from "./item.module.css";
 
 type Props = {
   item: IInventoryItem;
 };
 
-const Item: React.FC<Props> = ({ item }: Props) => {
+const Item: React.FC<Props> = ({ item }) => {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateRows: "auto auto",
-        gridGap: "1rem"
-      }}
-    >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "auto auto",
-          gridGap: "1rem",
-          justifyContent: "start"
-        }}
-      >
-        <div>
-          <img
-            style={{
-              border: "1px white solid"
-            }}
-            alt={item.displayProperties.name}
-            src={`https://www.bungie.net/${item.displayProperties.icon}`}
-            height={64}
-            width={64}
-          />
-        </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateRows: "auto auto"
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "2.75rem",
-              margin: 0,
-              marginTop: "-8px",
-              textTransform: "uppercase"
-            }}
-          >
-            {item.displayProperties.name}
-          </h1>
-          <p
-            style={{
-              alignSelf: "end",
-              fontSize: "1.2rem",
-              margin: 0,
-              marginBottom: "8px",
-              textTransform: "uppercase"
-            }}
-          >
-            {item.itemTypeDisplayName}
-          </p>
-        </div>
+    <div className={styles.item}>
+      <div className={styles.detail}>
+        <img
+          className={styles.icon}
+          alt={item.displayProperties.name}
+          src={`https://www.bungie.net/${item.displayProperties.icon}`}
+        />
+        <h1 className={styles.name}>{item.displayProperties.name}</h1>
+        <p className={styles.type}>{item.itemTypeDisplayName}</p>
       </div>
-      <div>
-        <p style={{ fontStyle: "italic", margin: 0 }}>
-          {item.displayProperties.description}
-        </p>
-      </div>
+      <p className={styles.description}>{item.displayProperties.description}</p>
     </div>
   );
 };

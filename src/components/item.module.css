@@ -1,0 +1,44 @@
+.item {
+  display: grid;
+  grid-template-areas:
+    "details"
+    "description";
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+.detail {
+  display: grid;
+  grid-template-areas:
+    "logo name"
+    "logo type";
+  grid-template-columns: 66px auto;
+  justify-content: start;
+  gap: 0 1rem;
+}
+
+.icon {
+  border: 1px white solid;
+  grid-area: logo;
+  width: 100%;
+}
+
+.name {
+  grid-area: name;
+  font-size: 2.5em;
+  margin-top: -8px;
+  text-transform: uppercase;
+}
+
+.type {
+  grid-area: type;
+  align-self: end;
+  font-size: 1.25em;
+  text-transform: uppercase;
+}
+
+.description {
+  grid-area: description;
+  font-style: italic;
+}

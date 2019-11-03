@@ -3,6 +3,7 @@ import { ISocketEntry } from "../state/ducks/manifest/types";
 import Masterwork from "../components/masterwork";
 import Socket from "../components/socket";
 import { ISocketCategory } from "../state/ducks/manifest/types";
+import styles from "./sockets.module.css";
 
 type Props = {
   socketEntries: ISocketEntry[];
@@ -22,7 +23,7 @@ const Sockets: React.FC<Props> = ({
   socketEntries,
   socketCategories,
   onChange
-}: Props) => {
+}) => {
   return (
     <>
       {socketCategories
@@ -34,7 +35,7 @@ const Sockets: React.FC<Props> = ({
         )
         .map(socketCategory => (
           <div key={socketCategory.socketCategory.hash}>
-            <h1 style={{ borderBottom: "1px white solid" }}>
+            <h1 className={styles.socketCategory}>
               {socketCategory.socketCategory.displayProperties.name}
             </h1>
             {socketCategory.socketIndexes.map(socketIndex => {

@@ -6,7 +6,7 @@ type Props = {
   onChange: (plugItemHash: number) => void;
 };
 
-const Masterwork: React.FC<Props> = ({ socket, onChange }: Props) => {
+const Masterwork: React.FC<Props> = ({ socket, onChange }) => {
   const [statHash, setStatHash] = useState(
     socket.singleInitialItem &&
       socket.singleInitialItem.investmentStats[0].stat.hash
