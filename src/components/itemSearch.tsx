@@ -35,8 +35,9 @@ const ItemSearch: React.FC<Props> = ({ items, onChange }) => {
         }}
         type="text"
         placeholder="Search"
-        autoFocus={true}
+        autoFocus={false}
         onClick={() => setShowSearch(true)}
+        onFocus={() => setShowSearch(true)}
       />
       {showSearch && (
         <div
