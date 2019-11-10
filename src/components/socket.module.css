@@ -1,9 +1,11 @@
 .socket {
   display: grid;
   grid-template-areas:
-    "icon name"
-    "icon description";
+    "icon name action"
+    "icon description action";
+  grid-template-columns: max-content 1fr max-content;
   gap: 0.5rem 1rem;
+  align-items: center;
   justify-content: start;
 }
 
@@ -17,9 +19,8 @@
   text-transform: uppercase;
 }
 
-.lock::after {
-  content: "\1f512";
-  margin-left: 1rem;
+.action {
+  grid-area: action;
 }
 
 .description {

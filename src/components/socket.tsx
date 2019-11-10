@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ISocketEntry, IInventoryItem } from "../state/ducks/manifest/types";
 import styles from "./socket.module.css";
-import classNames from "classnames";
 
 type Props = {
   socket: ISocketEntry;
@@ -41,7 +40,11 @@ const Socket: React.FC<Props> = ({ socket, onChange, value }) => {
       <div
         onClick={plugItems.length > 1 ? () => setShowOptions(true) : undefined}
         className={styles.socket}
-        style={{ cursor: "pointer" }}
+        style={{
+          border: "1px solid white",
+          cursor: "pointer",
+          padding: "0.5em"
+        }}
       >
         <img
           className={styles.icon}
@@ -50,16 +53,17 @@ const Socket: React.FC<Props> = ({ socket, onChange, value }) => {
           height={48}
           width={48}
         />
-        <h1
-          className={classNames(styles.name, {
-            [styles.lock]: plugItems.length <= 1
-          })}
-        >
-          {value.displayProperties.name}
-        </h1>
+        <h1 className={styles.name}>{value.displayProperties.name}</h1>
         <p className={styles.description}>
           {value.displayProperties.description}
         </p>
+        <div className={styles.action}>
+          {plugItems.length <= 1 ? (
+            <span>&#x1f512;</span>
+          ) : (
+            <span>&#x25bc;</span>
+          )}
+        </div>
       </div>
 
       <div
