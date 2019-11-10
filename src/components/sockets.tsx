@@ -1,11 +1,12 @@
 import React from "react";
-import { ISocketEntry } from "../state/ducks/manifest/types";
+import { ISocketEntry, IInventoryItem } from "../state/ducks/manifest/types";
 import Masterwork from "../components/masterwork";
 import Socket from "../components/socket";
 import { ISocketCategory } from "../state/ducks/manifest/types";
 import styles from "./sockets.module.css";
 
 type Props = {
+  plugItems: (IInventoryItem | undefined)[];
   socketEntries: ISocketEntry[];
   socketCategories: {
     socketCategory: ISocketCategory;
@@ -20,6 +21,7 @@ const displayedSocketCategoryHashes = [
 ];
 
 const Sockets: React.FC<Props> = ({
+  plugItems,
   socketEntries,
   socketCategories,
   onChange
@@ -68,6 +70,7 @@ const Sockets: React.FC<Props> = ({
                     <Masterwork
                       socket={socket}
                       onChange={hash => onChange(socketIndex, hash)}
+                      value={plugItems[socketIndex]!}
                     />
                   </div>
                 );
@@ -77,6 +80,7 @@ const Sockets: React.FC<Props> = ({
                     <Socket
                       socket={socket}
                       onChange={hash => onChange(socketIndex, hash)}
+                      value={plugItems[socketIndex]!}
                     />
                   </div>
                 );

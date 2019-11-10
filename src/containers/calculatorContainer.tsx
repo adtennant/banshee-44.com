@@ -13,9 +13,6 @@ import { IApplicationState } from "../state/ducks";
 const CalculatorContainer = () => {
   const dispatch = useDispatch();
 
-  /*const inventoryItems = useSelector(getInventoryItems);
-  const selectedInventoryItem = useSelector(getSelectedInventoryItem);
-  const selectedPlugItems = useSelector(getSelectedPlugItems);*/
   const stateToProps = useSelector((state: IApplicationState) => ({
     inventoryItems: getInventoryItems(state),
     selectedInventoryItem: getSelectedInventoryItem(state),

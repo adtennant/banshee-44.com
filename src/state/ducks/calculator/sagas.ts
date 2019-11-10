@@ -3,9 +3,6 @@ import { changeWeapon, changeSockets } from "./actions";
 import { getSelectedInventoryItem } from "./selectors";
 import { IApplicationState } from "..";
 
-/**
- * @desc Business logic of effect.
- */
 function* setDefaultSockets(): Generator {
   const state = yield select();
   const selectedItem = getSelectedInventoryItem(state as IApplicationState);
@@ -29,16 +26,10 @@ function* setDefaultSockets(): Generator {
   }
 }
 
-/**
- * @desc Watches every specified action and runs effect method and passes action args to it
- */
 function* watchChangeWeapon(): Generator {
   yield takeEvery(changeWeapon, setDefaultSockets);
 }
 
-/**
- * @desc saga init, forks in effects, other sagas
- */
 export default function* calculatorSaga() {
   yield all([fork(watchChangeWeapon)]);
 }

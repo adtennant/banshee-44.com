@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { IStat, ISocketEntry } from "../state/ducks/manifest/types";
+import React from "react";
+import {
+  IStat,
+  ISocketEntry,
+  IInventoryItem
+} from "../state/ducks/manifest/types";
 
 type Props = {
   socket: ISocketEntry;
   onChange: (plugItemHash: number) => void;
+  value: IInventoryItem;
 };
 
-const Masterwork: React.FC<Props> = ({ socket, onChange }) => {
-  const [statHash, setStatHash] = useState(
-    socket.singleInitialItem &&
-      socket.singleInitialItem.investmentStats[0].stat.hash
-  );
-
+const Masterwork: React.FC<Props> = ({ socket, onChange, value }) => {
   const stats = socket.reusablePlugSet!.reusablePlugItems.reduce(
     (stats, plugItem) =>
       stats.set(
@@ -22,7 +22,9 @@ const Masterwork: React.FC<Props> = ({ socket, onChange }) => {
   );
 
   const plugItems = socket.reusablePlugSet!.reusablePlugItems.filter(
-    plugItem => plugItem.investmentStats[0].stat.hash === statHash
+    plugItem =>
+      plugItem.investmentStats[0].stat.hash ===
+      value.investmentStats[0].stat.hash
   );
 
   return (
@@ -34,7 +36,6 @@ const Masterwork: React.FC<Props> = ({ socket, onChange }) => {
         }
         onChange={e => {
           const newStatHash = parseInt(e.target.value, 10);
-          setStatHash(newStatHash);
 
           const plugItem = socket.reusablePlugSet!.reusablePlugItems.filter(
             plugItem => plugItem.investmentStats[0].stat.hash === newStatHash
@@ -42,6 +43,7 @@ const Masterwork: React.FC<Props> = ({ socket, onChange }) => {
 
           onChange(plugItem.hash);
         }}
+        value={value.investmentStats[0].stat.hash}
       >
         {Array.from(stats.values()).map(stat => (
           <option key={stat.hash} value={stat.hash}>
@@ -54,6 +56,7 @@ const Masterwork: React.FC<Props> = ({ socket, onChange }) => {
           socket.singleInitialItem && socket.singleInitialItem.hash.toString()
         }
         onChange={e => onChange(parseInt(e.target.value, 10))}
+        value={value.hash}
       >
         {plugItems.map(plugItem => (
           <option key={plugItem.hash} value={plugItem.hash}>

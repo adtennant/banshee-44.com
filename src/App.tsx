@@ -17,18 +17,32 @@ const App = () => {
 
   return (
     <Layout>
-      {!isLoaded ? (
-        <Loading />
-      ) : (
-        <>
-          <p style={{ color: "red" }}>
-            Please be aware this is a work in progress (in case it wasn't
-            obvious). Calculations are accurate but everything else is subject
-            to change and continuous improvement.
-          </p>
-          <CalculatorContainer />
-        </>
-      )}
+      <div
+        style={{
+          background: "rgba(255, 0, 0, 0.3)",
+          border: "1px solid rgba(255, 0, 0, 0.5)",
+          borderRadius: "0.25rem",
+          margin: "0.5rem auto",
+          padding: "0.5rem",
+          width: "80%"
+        }}
+      >
+        <p style={{ marginTop: "0" }}>
+          Welcome to the new version of Banshee-44.com.
+        </p>
+        <p>
+          This is a work in progress. Please report any issues you find or
+          features you'd like to see on the{" "}
+          <a href="https://github.com/adtennant/banshee-44.com/issues">
+            Github Issues
+          </a>{" "}
+          page.
+        </p>
+        <p style={{ marginBottom: "0" }}>
+          PS. Banshee-44.com is now open source.
+        </p>
+      </div>
+      {!isLoaded ? <Loading /> : <CalculatorContainer />}
     </Layout>
   );
 };

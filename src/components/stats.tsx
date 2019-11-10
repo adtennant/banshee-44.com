@@ -102,22 +102,48 @@ const Stats: React.FC<Props> = ({ item, plugItems }) => {
   });
 
   return (
-    <ul>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "max-content 1fr",
+        gap: "0.5em 1em"
+      }}
+    >
       {displayStats
         .filter(stat => !stat.displayAsNumeric)
         .map(stat => (
-          <li key={stat.stat.hash}>
-            {stat.stat.displayProperties.name} - {stat.value}
-          </li>
+          <React.Fragment key={stat.stat.hash}>
+            <div>{stat.stat.displayProperties.name}</div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: `${stat.value * 0.9}% 1fr`,
+                gap: "0 0.5em",
+                transition: "all 0.6s ease",
+                width: "100%"
+              }}
+            >
+              <div
+                style={{
+                  background: "white",
+                  width: "100%"
+                }}
+              >
+                {stat.value}
+              </div>
+              <div>{stat.value}</div>
+            </div>
+          </React.Fragment>
         ))}
       {displayStats
         .filter(stat => stat.displayAsNumeric)
         .map(stat => (
-          <li key={stat.stat.hash}>
-            {stat.stat.displayProperties.name} - {stat.value}
-          </li>
+          <React.Fragment key={stat.stat.hash}>
+            <div>{stat.stat.displayProperties.name}</div>
+            <div>{stat.value}</div>
+          </React.Fragment>
         ))}
-    </ul>
+    </div>
   );
 };
 

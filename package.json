@@ -1,6 +1,6 @@
 {
   "name": "banshee-44",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "banshee-44.com",
   "license": "MIT",
   "author": "Alex Tennant <alex@adtennant.co.uk>",
@@ -15,12 +15,9 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@types/jest": "24.0.18",
-    "@types/node": "12.7.3",
-    "@types/react": "16.9.2",
-    "@types/react-dom": "16.9.0",
     "classnames": "^2.2.6",
     "eslint-utils": "^1.4.1",
+    "history": "^4.10.1",
     "husky": "^3.0.8",
     "lint-staged": "^9.4.1",
     "localforage": "^1.7.3",
@@ -30,6 +27,7 @@
     "react-redux": "7.1.0",
     "react-scripts": "3.1.2",
     "redux": "4.0.4",
+    "redux-location-state": "^2.5.2",
     "redux-logger": "^3.0.6",
     "redux-saga": "1.0.5",
     "reselect": "^4.0.0",
@@ -38,6 +36,11 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",
+    "@types/history": "^4.7.3",
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.3",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
     "@types/react-redux": "7.1.1",
     "@types/redux-logger": "^3.0.7"
   },

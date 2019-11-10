@@ -32,6 +32,7 @@ const Calculator: React.FC<Props> = ({
       <div className={styles.sockets}>
         {selectedInventoryItem && selectedInventoryItem.sockets && (
           <Sockets
+            plugItems={selectedPlugItems}
             {...selectedInventoryItem.sockets}
             onChange={onSocketChange}
           />
